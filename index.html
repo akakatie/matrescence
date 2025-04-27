@@ -1,20 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Sketches with Scroll Snap</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>Video Feed</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.typekit.net/pkg1agg.css">
+
 
 </head>
 <body>
-    <div id="menu">
-        <a href="/about.html">About</a>
-        <a href="/feed.html">Feed</a>
-        <a href="/gallery.html">Gallery</a>
-      </div>
 
-<div id="sketches-container"></div>
+    <nav class="navbar">
+        <ul>
+            <li><a href="https://bsky.app/profile/data-is-blue.bsky.social" target="_blank"><img src="Bluesky.svg"  id="bluesky-nav" class="bluesky"></a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#feed">Feed</a></li>
+        </ul>
+    </nav>
 
-<script src="script.js"></script>
+    <header id="instuctions" class="content">
+        <H1> My matrescence project</H1>
+        <p>Exploring my experience of matrescence through the language of data visualisation.</p>
+        <p>Scroll to view project, or explore the gallery view.</p>
+    </header>
+    
+    <main id="feed" class="feed">
+        <!-- Videos will be dynamically inserted here -->
+    </main>
+
+    <div id="end" class="content"><p>End.</p>
+        <a href="https://bsky.app/profile/data-is-blue.bsky.social" target="_blank"><img src="Bluesky.svg"  id="bluesky-end" class="bluesky"></a>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>

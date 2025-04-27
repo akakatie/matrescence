@@ -1,71 +1,117 @@
-html, body {
+body, html {
     margin: 0;
     padding: 0;
-    height: 100%;
-    overflow: hidden;
-  }
+    font-family: sans-serif;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    height: 100vh;
+    color: #151515;
+}
 
-  #menu {
+.navbar {
     position: sticky;
     top: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background: #ffffffcc;
-    backdrop-filter: blur(10px);
+    color: #151515;
+    background: #f7f7f7;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 1%;
+    text-align: center;
+    z-index: 10;
+    font-family: neue-kabel, sans-serif;
+font-weight: 600;
+font-style: normal;
+}
+
+.navbar ul {
+    color: #151515;
+    list-style: none;
     display: flex;
-    align-items: left;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-  }
-  
-  #menu a {
+    align-items: center;
+    gap: 2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar a {
     text-decoration: none;
-    font-size: 18px;
-    color: #333;
+    color: #151515;
     font-weight: bold;
-    padding: 10px 20px;
-    border-radius: 20px;
-    transition: background 0.3s, color 0.3s;
-  }
-  
-  #menu a:hover {
-    background: #f0f0f0;
-    color: #000;
-  }
+}
 
+a:hover {
+    color: #9a4fc7;
+}
 
-  #sketches-container {
-    height: 90%;
-    width: 100%;
-    overflow-y: auto;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
-  }
+#bluesky-nav{
+    height:20px;
+    margin-top:5px;
+}
 
-  .sketch-card {
-    height: calc(100vh - 60px); 
-    width: 100%;
+#bluesky-item{
+    margin-left:auto
+}
+
+#bluesky-end{
+    height: 60px;
+}
+
+.bluesky:hover{
+    filter: invert(37%) sepia(42%) saturate(1637%) hue-rotate(245deg) brightness(87%) contrast(86%);
+}
+
+H1 {
+    font-family: "petala-pro", sans-serif;
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.content{
+    scroll-snap-align: start;
+    min-height: 90vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    scroll-snap-align: center;
-    background: #fff;
+    padding-top: 5%;
     box-sizing: border-box;
-    padding: 20px;
-  }
+    gap: 1rem;    
+}
 
-  .sketch-card video {
-    width: 100%;
-    max-height: 90vh;
-    border-radius: 8px;
-    object-fit: contain;
-  }
+#end{
+    padding-bottom: 100px;
+    min-height: 100vh;
+}
 
-  .sketch-card p {
-    margin-top: 12px;
-    font-size: 16px;
-    color: #333;
+.feed {
+    display: flex;
+    flex-direction: column;
+    padding-top: 5%;
+}
+
+.video-card {
+    scroll-snap-align: start;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 4%;
+    box-sizing: border-box;
+    gap: 1rem;
+}
+
+.caption {
+    position: sticky;
+    top: 0;
+    padding: 0.5rem;
+    font-size: 1.2rem;
     text-align: center;
-  }
+    font-family: felt-tip-woman, sans-serif;
+}
+
+.video-container video {
+    width: auto;
+    height: 80vh;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+}
