@@ -89,7 +89,7 @@ H1 {
     justify-content: center;
     padding-top: 5%;
     box-sizing: border-box;
-    gap: 1rem;
+    height: 100%;
 }
 
 #instructions{
@@ -97,57 +97,65 @@ H1 {
     justify-content: center;
     max-width: 1000px;
     text-align: center;
-    text-align: center;    
+    height: 100%;    
 }
 
 #scrolldown{
-    height: 100px;
     width:100%;
+    height: 50%;
     display: flex;
-    align-items: center;
+    align-items: bottom;
     justify-content: center;
+    
 }
 
 #scrolldownImg{
-    align-self: center;
+    align-self: bottom;
+    margin-top: auto;
     padding-top: 5%;
     height: 100px;
     width:100px;
+    opacity: 0.5;
 
-    -webkit-animation: fadein 5s; /* Safari, Chrome and Opera > 12.1 */
-       -moz-animation: fadein 5s; /* Firefox < 16 */
-        -ms-animation: fadein 5s; /* Internet Explorer */
-         -o-animation: fadein 5s; /* Opera < 12.1 */
-            animation: fadein 5s;
+    -webkit-animation: fadein 4s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 4s; /* Firefox < 16 */
+        -ms-animation: fadein 4s; /* Internet Explorer */
+         -o-animation: fadein 4s; /* Opera < 12.1 */
+            animation: fadein 4s;
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    0% {opacity: 0; }
+    50% {opacity: 0; }
+    100% {opacity: .5;}
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    0% {opacity: 0; }
+    50% {opacity: 0; }
+    100% {opacity: .5;}
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    0% {opacity: 0; }
+    50% {opacity: 0; }
+    100% {opacity: .5;}
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    0% {opacity: 0; }
+    50% {opacity: 0; }
+    100% {opacity: .5;}
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
-    from { opacity: 0; }
-    to   { opacity: 1; }
+    0% {opacity: 0; }
+    50% {opacity: 0; }
+    100% {opacity: .5;}
 }
 
 
