@@ -39,7 +39,7 @@ async function loadVideos() {
       
       const statusIcon = document.createElement('img');
       statusIcon.className = 'status-icon ' + mode;
-      statusIcon.src = 'assets/pause.svg';
+      statusIcon.src = 'assets/pause.png';
       
       overlay.appendChild(timerSpan);
       overlay.appendChild(statusIcon);
@@ -77,11 +77,11 @@ function setupCustomControl(video, iconEl, timerEl) {
 
   function updateIcon() {
     if (isEnded) {
-        iconEl.src = 'assets/replay.svg'; // Replace with the path to your replay icon
+        iconEl.src = 'assets/replay.png'; // Replace with the path to your replay icon
     } else if (video.paused) {
-        iconEl.src = 'assets/play.svg'; // Replace with the path to your play icon
+        iconEl.src = 'assets/play.png'; // Replace with the path to your play icon
     } else {
-        iconEl.src = 'assets/pause.svg'; // Replace with the path to your pause icon
+        iconEl.src = 'assets/pause.png'; // Replace with the path to your pause icon
     }
 }
 
