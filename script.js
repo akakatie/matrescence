@@ -13,6 +13,7 @@ async function loadVideos() {
 
         const card = document.createElement('div');
         card.className = 'video-card';
+        card.id = id.trim(); 
 
         const captionElem = document.createElement('div');
         captionElem.className = 'caption';
@@ -24,18 +25,34 @@ async function loadVideos() {
         const video = document.createElement('video');
         video.src = `/videos/${file.trim()}`;
         video.setAttribute('alt', altText);
-        video.controls = false;
+        video.controls = true;
         video.controlsList = "play timeline"; // minimal controls
         video.preload = "metadata";
+        video.muted = true; 
 
         // Video behavior: pause at end
         video.addEventListener('ended', () => {
             video.pause();
         });
 
+        const linkButton = document.createElement('button');
+            linkButton.textContent = 'Copy link';
+            linkButton.className = 'copy-link';
+            linkButton.title = 'Copy link to this video';
+            linkButton.onclick = () => {
+                const fullURL = `${window.location.origin}${window.location.pathname}#${id.trim()}`;
+                navigator.clipboard.writeText(fullURL).then(() => {
+                    linkButton.textContent = 'Link copied!';
+                    setTimeout(() => {
+                        linkButton.textContent = 'Copy link';
+                    }, 1500);
+                });
+            };
+
         videoContainer.appendChild(video);
         card.appendChild(captionElem);
         card.appendChild(videoContainer);
+        card.appendChild(linkButton);
         feed.appendChild(card);
     });
 
@@ -61,3 +78,38 @@ function setupAutoplay() {
 }
 
 loadVideos();
+
+document.querySelectorAll('video').forEach(video => {
+    let hideControlsTimeout;
+  
+    function showControlsTemporarily() {
+      video.setAttribute('controls', ''); // show controls
+      clearTimeout(hideControlsTimeout);
+      hideControlsTimeout = setTimeout(() => {
+        video.removeAttribute('controls'); // hide controls again
+      }, 3000);
+    }
+  
+    function togglePlay() {
+      if (video.paused) {
+        video.play();
+      } else {
+        video.pause();
+      }
+    }
+  
+    ['click', 'touchstart'].forEach(evt => {
+      video.addEventListener(evt, e => {
+        togglePlay();
+        showControlsTemporarily();
+        e.stopPropagation();
+      });
+    });
+  
+    // Optional: Remove controls when user scrolls
+    document.addEventListener('scroll', () => {
+      video.removeAttribute('controls');
+    });
+  });
+
+
