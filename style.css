@@ -95,7 +95,7 @@ H1 {
 #instructions{
     align-items: center;
     justify-content: center;
-    max-width: 1000px;
+    max-width: 800px;
     text-align: center;
     height: 100%;    
 }
@@ -109,9 +109,13 @@ H1 {
     
 }
 
-#scrolldownImg{
+#scrolldownLink{
     align-self: bottom;
     margin-top: auto;
+}
+
+#scrolldownImg{
+
     padding-top: 5%;
     height: 100px;
     width:100px;
@@ -124,38 +128,67 @@ H1 {
             animation: fadein 4s;
 }
 
+#scrolldownImg:hover{
+    filter: invert(37%) sepia(42%) saturate(1637%) hue-rotate(245deg) brightness(87%) contrast(86%);
+}
+
 @keyframes fadein {
     0% {opacity: 0; }
     50% {opacity: 0; }
-    100% {opacity: .5;}
+    88% {transform: translateY(0px); }    
+    90% {transform: translateY(10px); }
+    94% {transform: translateY(-10px); }
+    98% {transform: translateY(10px); }
+    100% {opacity: .5;
+        transform: translateY(0px); }
 }
 
 /* Firefox < 16 */
 @-moz-keyframes fadein {
     0% {opacity: 0; }
     50% {opacity: 0; }
-    100% {opacity: .5;}
+    88% {transform: translateY(0px); }    
+    90% {transform: translateY(10px); }
+    94% {transform: translateY(-10px); }
+    98% {transform: translateY(10px); }
+    100% {opacity: .5;
+        transform: translateY(0px); }
 }
 
 /* Safari, Chrome and Opera > 12.1 */
 @-webkit-keyframes fadein {
     0% {opacity: 0; }
     50% {opacity: 0; }
-    100% {opacity: .5;}
+    88% {transform: translateY(0px); }    
+    90% {transform: translateY(10px); }
+    94% {transform: translateY(-10px); }
+    98% {transform: translateY(10px); }
+    100% {opacity: .5;
+        transform: translateY(0px); }
 }
 
 /* Internet Explorer */
 @-ms-keyframes fadein {
     0% {opacity: 0; }
     50% {opacity: 0; }
-    100% {opacity: .5;}
+    88% {transform: translateY(0px); }    
+    90% {transform: translateY(10px); }
+    94% {transform: translateY(-10px); }
+    98% {transform: translateY(10px); }
+    100% {opacity: .5;
+        transform: translateY(0px); }
 }
 
 /* Opera < 12.1 */
 @-o-keyframes fadein {
     0% {opacity: 0; }
     50% {opacity: 0; }
-    100% {opacity: .5;}
+    88% {transform: translateY(0px); }    
+    90% {transform: translateY(10px); }
+    94% {transform: translateY(-10px); }
+    98% {transform: translateY(10px); }
+    100% {opacity: .5;
+        transform: translateY(0px); }
 }
 
 
@@ -199,19 +232,29 @@ H1 {
     aspect-ratio: 9/16;
     object-fit: cover;
     border-radius: 12px; /* 🎨 Rounded corners */
+    position: relative;
+}
+
+.video-container {
+    position: relative;
+
 }
 
 .copy-link {
-    margin: 0;
-    padding: 0;
-    font-size: clamp(0.9rem, 2vw, 1rem);
-    border: none;
+    font-size: clamp(0.55rem, 1.1vw, 0.75rem);
+    padding: 0.4em 1em;
+    border: 1px solid #6d6d6d;
+    border-radius: 999px;
+    background: transparent;
+    color: #6d6d6d;
     cursor: pointer;
-}
-
-.copy-link:hover {
+    transition: all 0.2s ease;
+  }
+  
+  .copy-link:hover {
     color: #9a4fc7;
-}
+    border-color: #9a4fc7;
+  }
 
 video::-webkit-media-controls {
     display: none !important;
@@ -228,3 +271,50 @@ video::-webkit-media-controls {
     outline: none;
     touch-action: manipulation;
   }
+
+  .custom-controls {
+    position: absolute;
+    bottom: 2%;
+    right: 1%;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.3rem 0.3rem;
+    border-radius: 12px;
+    font-family: neue-kabel, sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 0.6rem;
+    pointer-events: none;
+  }
+
+    .custom-controls.light-mode{
+        background: rgba(0, 0, 0, 0.2);
+        color: #151515;
+    }
+  .custom-controls.dark-mode{
+    background: rgba(255, 255, 255, 0.2);
+    color: #151515;
+  }  
+  
+  .timer {
+    min-width: 40px; /* enough space for MM:SS */
+    text-align: left;
+  }
+
+  .timer.light-mode{
+    color: #151515;
+
+  }
+
+ .timer.dark-mode{
+    color: #cacaca;
+}
+
+  .status-icon {
+    height: 20px;
+  }
+
+  .status-icon.dark-mode{
+    filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
+}

@@ -1,15 +1,15 @@
-﻿Order,ID,file,short-title,caption,alt-text
-1,matrescence,placeholder.mp4,Matrescence,lorem ipsum,lorem ipsum
-2,heart,heart+body.mp4,Heart,A cliché for a reason.,lorem ipsum
-3,mentalhealth,mentalhealth.mp4,Data tracking,"A classic case of correlation/, not causation.",lorem ipsum
-4,roadtrips,roadtrips.mp4,Road trips,I used to love getting in the car with a playlist and snacks.,lorem ipsum
-5,sleep,sleep-no-sleep.mp4,Sleep,A good night's sleep really does change everything,lorem ipsum
-6,blueberries,blueberries.mp4,Blueberries,lorem ipsum,lorem ipsum
-7,mortality,mortality.mp4,Mortality,lorem ipsum,lorem ipsum
-8,cups,abandoned-cups.mp4,Cups,Too precious to waste.,lorem ipsum
-9,brains,brains.mp4,Brain v Brain,"A simplificaiton/, but a useful one.",lorem ipsum
-10,laundry,laundry.mp4,Laundry,I'd never washed literally every towel in the house in one day before.,lorem ipsum
-11,carparks,carparks.mp4,Carpark tears,lorem ipsum,lorem ipsum
-12,tupperware,tupperware.mp4,Tupperware,My most extreme act of nesting behaviour.,lorem ipsum
-13,blankets,blankets.mp4,Blankets,lorem ipsum,lorem ipsum
-14,alphabet,alphabet-song.mp4,Alphabet song,lorem ipsum,lorem ipsum
+﻿Order,ID,file,short-title,caption,alt-text,mode
+1,matrescence,placeholder.mp4,Matrescence,lorem ipsum,lorem ipsum,dark-mode
+2,heart,heart+body.mp4,Heart,A cliché for a reason.,lorem ipsum,light-mode
+3,mentalhealth,mentalhealth.mp4,Data tracking,"A classic case of correlation/, not causation.",lorem ipsum,light-mode
+4,roadtrips,roadtrips.mp4,Road trips,I used to love getting in the car with a playlist and snacks.,lorem ipsum,light-mode
+5,sleep,sleep-no-sleep.mp4,Sleep,A good night's sleep really does change everything,lorem ipsum,light-mode
+6,blueberries,blueberries.mp4,Blueberries,lorem ipsum,lorem ipsum,light-mode
+7,mortality,mortality.mp4,Mortality,lorem ipsum,lorem ipsum,dark-mode
+8,cups,abandoned-cups.mp4,Cups,Too precious to waste.,lorem ipsum,light-mode
+9,brains,brains.mp4,Brain v Brain,"A simplificaiton/, but a useful one.",lorem ipsum,dark-mode
+10,laundry,laundry.mp4,Laundry,I'd never washed literally every towel in the house in one day before.,lorem ipsum,light-mode
+11,carparks,carparks.mp4,Carpark tears,lorem ipsum,lorem ipsum,dark-mode
+12,tupperware,tupperware.mp4,Tupperware,My most extreme act of nesting behaviour.,lorem ipsum,light-mode
+13,blankets,blankets.mp4,Blankets,lorem ipsum,lorem ipsum,dark-mode
+14,alphabet,alphabet-song.mp4,Alphabet song,lorem ipsum,lorem ipsum,light-mode

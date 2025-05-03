@@ -1,62 +1,122 @@
 
 async function loadVideos() {
-    const response = await fetch('sketches.csv');
-    const data = await response.text();
-    const rows = data.split('\n').slice(1); // skip header row
+  const response = await fetch('sketches.csv');
+  const data = await response.text();
+  const rows = data.split('\n').slice(1);
 
-    const feed = document.getElementById('feed');
+  const feed = document.getElementById('feed');
 
-    rows.forEach(row => {
-        const [order, id, file, shortTitle, caption, altText] = row.split(',');
+  rows.forEach(row => {
+      const [order, id, file, shortTitle, caption, altText, mode] = row.split(',');
 
-        if (!file) return; // Skip if empty line
+      if (!file) return;
 
-        const card = document.createElement('div');
-        card.className = 'video-card';
-        card.id = id.trim(); 
+      const card = document.createElement('div');
+      card.className = 'video-card';
+      card.id = id.trim();
 
-        const captionElem = document.createElement('div');
-        captionElem.className = 'caption';
-        captionElem.textContent = caption;
+      const captionElem = document.createElement('div');
+      captionElem.className = 'caption';
+      captionElem.textContent = caption;
 
-        const videoContainer = document.createElement('div');
-        videoContainer.className = 'video-container';
+      const videoContainer = document.createElement('div');
+      videoContainer.className = 'video-container';
 
-        const video = document.createElement('video');
-        video.src = `/videos/${file.trim()}`;
-        video.setAttribute('alt', altText);
-        video.controls = true;
-        video.controlsList = "play timeline"; // minimal controls
-        video.preload = "metadata";
-        video.muted = true; 
+      const video = document.createElement('video');
+      video.src = `/videos/${file.trim()}`;
+      video.setAttribute('alt', altText);
+      video.setAttribute('preload', 'metadata');
+      video.setAttribute('playsinline', '');
+      video.muted = true;
+      video.removeAttribute('controls');
 
-        // Video behavior: pause at end
-        video.addEventListener('ended', () => {
-            video.pause();
-        });
+      const overlay = document.createElement('div');
+      overlay.className = 'custom-controls ' + mode;
+      
+      const timerSpan = document.createElement('span');
+      timerSpan.className = 'timer '+ mode;
+      timerSpan.textContent = '00:00';
+      
+      const statusIcon = document.createElement('img');
+      statusIcon.className = 'status-icon ' + mode;
+      statusIcon.src = 'assets/pause.svg';
+      
+      overlay.appendChild(timerSpan);
+      overlay.appendChild(statusIcon);
 
-        const linkButton = document.createElement('button');
-            linkButton.textContent = 'Copy link';
-            linkButton.className = 'copy-link';
-            linkButton.title = 'Copy link to this video';
-            linkButton.onclick = () => {
-                const fullURL = `${window.location.origin}${window.location.pathname}#${id.trim()}`;
-                navigator.clipboard.writeText(fullURL).then(() => {
-                    linkButton.textContent = 'Link copied!';
-                    setTimeout(() => {
-                        linkButton.textContent = 'Copy link';
-                    }, 1500);
-                });
-            };
+      videoContainer.appendChild(video);
+      videoContainer.appendChild(overlay);
 
-        videoContainer.appendChild(video);
-        card.appendChild(captionElem);
-        card.appendChild(videoContainer);
-        card.appendChild(linkButton);
-        feed.appendChild(card);
-    });
+      const linkButton = document.createElement('button');
+      linkButton.textContent = 'Copy link';
+      linkButton.className = 'copy-link';
+      linkButton.title = 'Copy link to this video';
+      linkButton.onclick = () => {
+          const fullURL = `${window.location.origin}${window.location.pathname}#${id.trim()}`;
+          navigator.clipboard.writeText(fullURL).then(() => {
+              linkButton.textContent = 'Link copied!';
+              setTimeout(() => {
+                  linkButton.textContent = 'Copy link';
+              }, 1500);
+          });
+      };
 
-    setupAutoplay();
+      card.appendChild(captionElem);
+      card.appendChild(videoContainer);
+      card.appendChild(linkButton);
+      feed.appendChild(card);
+
+      setupCustomControl(video, statusIcon, timerSpan);
+  });
+
+  setupAutoplay();
+}
+
+function setupCustomControl(video, iconEl, timerEl) {
+  let isEnded = false;
+
+  function updateIcon() {
+    if (isEnded) {
+        iconEl.src = 'assets/replay.svg'; // Replace with the path to your replay icon
+    } else if (video.paused) {
+        iconEl.src = 'assets/play.svg'; // Replace with the path to your play icon
+    } else {
+        iconEl.src = 'assets/pause.svg'; // Replace with the path to your pause icon
+    }
+}
+
+  function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
+  }
+
+  video.addEventListener('timeupdate', () => {
+      const remaining = video.duration - video.currentTime;
+      timerEl.textContent = formatTime(remaining);
+  });
+
+  video.addEventListener('ended', () => {
+      isEnded = true;
+      updateIcon();
+  });
+
+  video.parentElement.addEventListener('click', () => {
+      video.parentElement.dataset.userInteracted = 'true';
+
+      if (isEnded) {
+          video.currentTime = 0;
+          video.play();
+          isEnded = false;
+      } else if (video.paused) {
+          video.play();
+      } else {
+          video.pause();
+      }
+      updateIcon();
+  });
+
+  updateIcon();
 }
 
 function setupAutoplay() {
@@ -64,13 +124,20 @@ function setupAutoplay() {
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             const video = entry.target;
+            const container = video.parentElement;
+            const userInteracted = container.dataset.userInteracted === 'true';
+
             if (entry.isIntersecting && entry.intersectionRatio === 1) {
-                video.play();
+                if (!userInteracted) {
+                    video.play();
+                }
             } else {
-                video.pause();
+                if (!userInteracted) {
+                    video.pause();
+                }
             }
         });
-    }, { threshold: 1.0 }); // Fully visible
+    }, { threshold: 1.0 });
 
     videos.forEach(video => {
         observer.observe(video);
@@ -78,38 +145,3 @@ function setupAutoplay() {
 }
 
 loadVideos();
-
-document.querySelectorAll('video').forEach(video => {
-    let hideControlsTimeout;
-  
-    function showControlsTemporarily() {
-      video.setAttribute('controls', ''); // show controls
-      clearTimeout(hideControlsTimeout);
-      hideControlsTimeout = setTimeout(() => {
-        video.removeAttribute('controls'); // hide controls again
-      }, 3000);
-    }
-  
-    function togglePlay() {
-      if (video.paused) {
-        video.play();
-      } else {
-        video.pause();
-      }
-    }
-  
-    ['click', 'touchstart'].forEach(evt => {
-      video.addEventListener(evt, e => {
-        togglePlay();
-        showControlsTemporarily();
-        e.stopPropagation();
-      });
-    });
-  
-    // Optional: Remove controls when user scrolls
-    document.addEventListener('scroll', () => {
-      video.removeAttribute('controls');
-    });
-  });
-
-
