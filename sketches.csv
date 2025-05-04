@@ -1,15 +1,17 @@
 ﻿Order,ID,file,short-title,caption,alt-text,mode
-1,matrescence,placeholder.mp4,Matrescence,lorem ipsum,lorem ipsum,dark-mode
+1,matrescence,matrescence.mp4,Matrescence,"An experience, not the experience.",lorem ipsum,dark-mode
 2,heart,heart+body.mp4,Heart,A cliché for a reason.,lorem ipsum,light-mode
-3,mentalhealth,mentalhealth.mp4,Data tracking,"A classic case of correlation/, not causation.",lorem ipsum,light-mode
+3,mentalhealth,mentalhealth.mp4,Data tracking,I guess you could call these interdependent variables.,lorem ipsum,light-mode
 4,roadtrips,roadtrips.mp4,Road trips,I used to love getting in the car with a playlist and snacks.,lorem ipsum,light-mode
-5,sleep,sleep-no-sleep.mp4,Sleep,A good night's sleep really does change everything,lorem ipsum,light-mode
-6,blueberries,blueberries.mp4,Blueberries,lorem ipsum,lorem ipsum,light-mode
-7,mortality,mortality.mp4,Mortality,lorem ipsum,lorem ipsum,dark-mode
+5,sleep,sleep-no-sleep.mp4,Sleep,A good night's sleep really does change everything.,lorem ipsum,light-mode
+6,blueberries,blueberries.mp4,Blueberries,We're two for two on purple projectile vomit at midnight.,lorem ipsum,light-mode
+7,mortality,mortality.mp4,Mortality,There's no words for how deep this fear runs.,lorem ipsum,dark-mode
 8,cups,abandoned-cups.mp4,Cups,Too precious to waste.,lorem ipsum,light-mode
-9,brains,brains.mp4,Brain v Brain,"A simplificaiton/, but a useful one.",lorem ipsum,dark-mode
-10,laundry,laundry.mp4,Laundry,I'd never washed literally every towel in the house in one day before.,lorem ipsum,light-mode
-11,carparks,carparks.mp4,Carpark tears,lorem ipsum,lorem ipsum,dark-mode
+9,brains,brains.mp4,Brain v Brain,"A simplification, but a useful one.",lorem ipsum,dark-mode
+10,laundry,laundry.mp4,Laundry,I'd never washed literally every towel in the house in one day before.,lorem ipsum,dark-mode
+11,carparks,carparks.mp4,Carpark tears,There's some things you just shouldn't say <strike>to people you don't know</strike>.,lorem ipsum,dark-mode
 12,tupperware,tupperware.mp4,Tupperware,My most extreme act of nesting behaviour.,lorem ipsum,light-mode
-13,blankets,blankets.mp4,Blankets,lorem ipsum,lorem ipsum,dark-mode
-14,alphabet,alphabet-song.mp4,Alphabet song,lorem ipsum,lorem ipsum,light-mode
+13,blankets,blankets.mp4,Blankets,"Cosleeping saved us, but gosh it's chilly.",lorem ipsum,dark-mode
+14,alphabet,alphabet-song.mp4,Alphabet song,"I have to sing it, even in my head.",lorem ipsum,light-mode
+15,duplo,duplo.mp4,Duplo,"Still fun, 30 years later.",lorem ipsum,dark-mode
+16,authors,authors.mp4,Authors,I really don't want this list to get any shorter.,lorem ipsum,light-mode

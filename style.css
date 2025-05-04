@@ -6,7 +6,7 @@ body, html {
     overflow-y: scroll;
     height: 100vh;
     color: #151515;
-    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-size: clamp(1.1rem, 4vw, 1.4rem);
     line-height: 1.6;
 }
 
@@ -20,12 +20,15 @@ html {
     color: #151515;
     background: #f7f7f7;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    padding: 1%;
+    padding: 5px;
+    padding-left: 15px;
     text-align: center;
     z-index: 10;
     font-family: neue-kabel, sans-serif;
     font-weight: 600;
     font-style: normal;
+    height: 25px;
+    font-size: clamp(.8rem, 2vw, .6rem);
 }
 
 .navbar ul {
@@ -34,7 +37,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: left;
-    gap: 1rem;
+    gap: 1.5rem;
     margin: 0;
     padding: 0;
 }
@@ -78,6 +81,8 @@ H1 {
     font-size: 3rem;
     font-weight: 800;
     font-style: normal;
+    line-height: 1.1;
+    font-size: clamp(2rem, 6vw, 3rem);
 }
 
 .content{
@@ -97,7 +102,19 @@ H1 {
     justify-content: center;
     max-width: 800px;
     text-align: center;
-    height: 100%;    
+    height: 100%;
+    padding: 2%;    
+}
+
+#preamble{
+    font-family: "neue-kabel", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.1;
+    font-size: clamp(1.2rem, 3vw, 1.6rem);
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #scrolldown{
@@ -203,27 +220,26 @@ H1 {
 .feed {
     display: flex;
     flex-direction: column;
-    padding-top: 5%;
-
 }
 
 .video-card {
     scroll-snap-align: center;
-    min-height: 90vh;
+    min-height: calc(100vh - 40px);
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding-top: 4%;
     box-sizing: border-box;
 }
 
 .caption {
     position: sticky;
     top: 0;
-    padding: 0.5rem;
-    font-size: 1.2rem;
+    padding: 15px;
+    padding-top: 30px;
+    font-size: clamp(1rem, 4vw, 1.25rem);
     text-align: center;
     font-family: felt-tip-woman, sans-serif;
+    line-height: 1.1;
 }
 
 .video-container video {
@@ -275,16 +291,17 @@ video::-webkit-media-controls {
   .custom-controls {
     position: absolute;
     bottom: 2%;
+    margin-bottom: 2px;
     right: 1%;
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.3rem 0.3rem;
+
+    padding: 3px;
     border-radius: 12px;
     font-family: neue-kabel, sans-serif;
     font-weight: 600;
     font-style: normal;
-    font-size: 0.6rem;
+    font-size: clamp(0.8rem, 2.5vw, 1rem);
     pointer-events: none;
   }
 
@@ -293,13 +310,14 @@ video::-webkit-media-controls {
         color: #151515;
     }
   .custom-controls.dark-mode{
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(238, 238, 238, 0.2);
     color: #151515;
-  }  
+     }  
   
   .timer {
     min-width: 40px; /* enough space for MM:SS */
     text-align: left;
+    margin-left: 6px;
   }
 
   .timer.light-mode{
@@ -308,11 +326,12 @@ video::-webkit-media-controls {
   }
 
  .timer.dark-mode{
-    color: #cacaca;
+    color: #ebebeb;
 }
 
   .status-icon {
     height: 20px;
+    margin-left: 2px;
   }
 
   .status-icon.dark-mode{

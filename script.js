@@ -1,13 +1,29 @@
+function parseCSV(text) {
+    const rows = [];
+    const lines = text.trim().split('\n');
+    for (const line of lines) {
+      const match = line.match(/(\".*?\"|[^,]+)(?=,|$)/g);
+      if (match) {
+        rows.push(match.map(cell =>
+          cell.startsWith('"') && cell.endsWith('"') 
+            ? cell.slice(1, -1).replace(/""/g, '"') 
+            : cell
+        ));
+      }
+    }
+    return rows;
+  }
 
 async function loadVideos() {
   const response = await fetch('sketches.csv');
   const data = await response.text();
-  const rows = data.split('\n').slice(1);
+  const allRows = parseCSV(data);
+  const rows = allRows.slice(1); 
 
   const feed = document.getElementById('feed');
 
   rows.forEach(row => {
-      const [order, id, file, shortTitle, caption, altText, mode] = row.split(',');
+      const [order, id, file, shortTitle, caption, altText, mode] = row;
 
       if (!file) return;
 
@@ -17,7 +33,7 @@ async function loadVideos() {
 
       const captionElem = document.createElement('div');
       captionElem.className = 'caption';
-      captionElem.textContent = caption;
+      captionElem.innerHTML = caption;
 
       const videoContainer = document.createElement('div');
       videoContainer.className = 'video-container';
@@ -41,14 +57,15 @@ async function loadVideos() {
       statusIcon.className = 'status-icon ' + mode;
       statusIcon.src = 'assets/pause.png';
       
-      overlay.appendChild(timerSpan);
       overlay.appendChild(statusIcon);
+      overlay.appendChild(timerSpan);
+    
 
       videoContainer.appendChild(video);
       videoContainer.appendChild(overlay);
 
       const linkButton = document.createElement('button');
-      linkButton.textContent = 'Copy link';
+      linkButton.textContent = 'Copy video link';
       linkButton.className = 'copy-link';
       linkButton.title = 'Copy link to this video';
       linkButton.onclick = () => {
@@ -77,11 +94,12 @@ function setupCustomControl(video, iconEl, timerEl) {
 
   function updateIcon() {
     if (isEnded) {
-        iconEl.src = 'assets/replay.png'; // Replace with the path to your replay icon
+        iconEl.src = 'assets/replay.png';
+        if (timerEl) timerEl.textContent = 'Replay';
     } else if (video.paused) {
-        iconEl.src = 'assets/play.png'; // Replace with the path to your play icon
+        iconEl.src = 'assets/play.png'; 
     } else {
-        iconEl.src = 'assets/pause.png'; // Replace with the path to your pause icon
+        iconEl.src = 'assets/pause.png';
     }
 }
 
@@ -101,6 +119,15 @@ function setupCustomControl(video, iconEl, timerEl) {
       updateIcon();
   });
 
+      // Update icon when playback state changes
+      video.addEventListener('play', () => {
+        isEnded = false;
+        updateIcon();
+    });
+
+    video.addEventListener('pause', updateIcon);
+
+
   video.parentElement.addEventListener('click', () => {
       video.parentElement.dataset.userInteracted = 'true';
 
@@ -115,6 +142,12 @@ function setupCustomControl(video, iconEl, timerEl) {
       }
       updateIcon();
   });
+
+    // IMPORTANT: check if autoplay already started
+    if (!video.paused && !video.ended) {
+        updateIcon(); // video started automatically
+    }
+
 
   updateIcon();
 }
