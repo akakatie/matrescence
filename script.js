@@ -78,8 +78,9 @@ async function loadVideos() {
           });
       };
 
-      card.appendChild(captionElem);
+      
       card.appendChild(videoContainer);
+      card.appendChild(captionElem);
       card.appendChild(linkButton);
       feed.appendChild(card);
 
