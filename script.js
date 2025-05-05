@@ -65,7 +65,7 @@ async function loadVideos() {
       videoContainer.appendChild(overlay);
 
       const linkButton = document.createElement('button');
-      linkButton.textContent = 'Copy video link';
+      linkButton.textContent = 'Copy link';
       linkButton.className = 'copy-link';
       linkButton.title = 'Copy link to this video';
       linkButton.onclick = () => {
@@ -78,10 +78,35 @@ async function loadVideos() {
           });
       };
 
+      const shareButton = document.createElement('button');
+      shareButton.textContent = 'Share video';
+      shareButton.className = 'share-link';
+      shareButton.title = 'Share this video';
+      shareButton.onclick = () => {
+        const fullURL = `${window.location.origin}${window.location.pathname}#${id.trim()}`;
+        
+        if (navigator.share) {
+          navigator.share({
+            title: shortTitle || 'Take a look',
+            text: caption || '',
+            url: fullURL,
+          }).catch((error) => {
+            console.log('Share failed:', error);
+          });
+        } else {
+          alert('Sharing is not supported in this browser.');
+        }
+      };  
       
+      const buttonContainer = document.createElement('div');
+      buttonContainer.className = 'button-container';
+      buttonContainer.appendChild(shareButton);
+      buttonContainer.appendChild(linkButton);
+     
+
       card.appendChild(videoContainer);
       card.appendChild(captionElem);
-      card.appendChild(linkButton);
+      card.appendChild(buttonContainer);
       feed.appendChild(card);
 
       setupCustomControl(video, statusIcon, timerSpan);

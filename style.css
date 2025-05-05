@@ -272,7 +272,16 @@ H1 {
 
 }
 
-.copy-link {
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    flex-wrap: wrap; /* Optional: wraps buttons on very small screens */
+  }
+  
+  .copy-link,
+  .share-link {
     font-size: clamp(0.55rem, 1.1vw, 0.75rem);
     padding: 0.4em 1em;
     border: 1px solid #6d6d6d;
@@ -283,10 +292,12 @@ H1 {
     transition: all 0.2s ease;
   }
   
-  .copy-link:hover {
+  .copy-link:hover,
+  .share-link:hover {
     color: #9a4fc7;
     border-color: #9a4fc7;
   }
+
 
 video::-webkit-media-controls {
     display: none !important;
