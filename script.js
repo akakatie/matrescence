@@ -1,3 +1,7 @@
+
+// This script loads a CSV file containing video metadata, creates video cards dynamically, and sets up custom controls for each video.
+// The script was co-created by ChatGPT and the author of the original code.
+
 function parseCSV(text) {
     const rows = [];
     const lines = text.trim().split('\n');
