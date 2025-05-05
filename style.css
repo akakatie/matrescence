@@ -8,6 +8,7 @@ body, html {
     color: #151515;
     font-size: 16px;
     line-height: 1.6;
+    overscroll-behavior-y: contain;
 }
 
 html {
@@ -29,18 +30,8 @@ html {
     font-style: normal;
     height: 25px;
     font-size: 1rem;
-    scroll-snap-align: start;
+    scroll-snap-align: top;
 }
-
-@media (min-height: 800px) {
-    .navbar {
-      position: sticky;
-      top: 0;
-    }
-    .content{
-        scroll-snap-align: center;
-    }
-  }
 
 .navbar ul {
     color: #151515;
@@ -107,6 +98,7 @@ H1 {
     padding-top: 40px;
     box-sizing: border-box;
     height: 100%;
+    scroll-snap-align: center;
 }
 
 #instructions{
@@ -247,7 +239,7 @@ H1 {
     top: 0;
     padding: 0px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     font-size: clamp(1rem, 2vw, 1.25rem);
     text-align: center;
     font-family: felt-tip-woman, sans-serif;
@@ -255,16 +247,6 @@ H1 {
     text-wrap: pretty;
 }
 
-@media (min-height: 800px) {
-    .video-card {
-        min-height: calc(100vh - 40px);
-        padding-top: 40px;
-    }
-    .caption { 
-        padding: 5px;
-        margin-bottom: 15px;
-    }
-  }
 
 .video-container video {
     height: auto;
@@ -286,13 +268,12 @@ H1 {
     display: flex;
     justify-content: center;
     gap: 0.75rem;
-    margin-top: 0.75rem;
     flex-wrap: wrap; /* Optional: wraps buttons on very small screens */
   }
   
   .copy-link, .share-link {
     font-size: clamp(0.55rem, 1.1vw, 0.75rem);
-    padding: 0.4em 1em;
+    padding: 5px 10px;
     border: 1px solid #6d6d6d;
     border-radius: 999px;
     background: transparent;
@@ -372,3 +353,22 @@ video::-webkit-media-controls {
   .status-icon.dark-mode{
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
+
+
+@media (min-height: 800px) {
+    .navbar {
+      position: sticky;
+      top: 0;
+    }
+    .content{
+        scroll-snap-align: center;
+    }
+    .video-card {
+        min-height: calc(100vh - 40px);
+        padding-top: 40px;
+    }
+    .caption { 
+        padding: 5px;
+        margin-bottom: 15px;
+    }
+  }
