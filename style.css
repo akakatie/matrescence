@@ -246,9 +246,9 @@ H1 {
 .caption {
     position: sticky;
     top: 0;
-    padding: 5px;
+    padding: 0px;
     margin-top: 5px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     font-size: clamp(1rem, 2vw, 1.25rem);
     text-align: center;
     font-family: felt-tip-woman, sans-serif;
@@ -262,8 +262,8 @@ H1 {
         padding-top: 40px;
     }
     .caption { 
-        padding: 0px;
-        margin-bottom: 5px;
+        padding: 5px;
+        margin-bottom: 15px;
     }
   }
 
