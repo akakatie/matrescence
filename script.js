@@ -78,6 +78,13 @@ async function loadVideos() {
           });
       };
 
+
+      function stripHTML(html) {
+        const temp = document.createElement('div');
+        temp.innerHTML = html;
+        return temp.textContent || temp.innerText || '';
+      }
+
       const shareButton = document.createElement('button');
       shareButton.textContent = 'Share video';
       shareButton.className = 'share-link';
@@ -87,9 +94,9 @@ async function loadVideos() {
         
         if (navigator.share) {
           navigator.share({
-            title: shortTitle || 'Take a look',
-            text: caption || '',
-            url: fullURL,
+                title: "Data is Blue #MyMatrescenceProject",
+                text: `${shortTitle || ''}: ${stripHTML(caption) || ''}`.trim(),
+                url: fullURL
           }).catch((error) => {
             console.log('Share failed:', error);
           });
