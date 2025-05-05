@@ -89,6 +89,7 @@ H1 {
     font-style: normal;
     line-height: 1.1;
     font-size: clamp(2rem, 6vw, 3rem);
+    text-wrap: pretty;
 }
 
 .content{
@@ -235,14 +236,10 @@ H1 {
     flex-direction: column;
     align-items: center;
     box-sizing: border-box;
-    padding-top: 40px;
+    padding-top: 20px;
 }
 
-@media (min-height: 800px) {
-    .video-card {
-        min-height: calc(100vh - 40px);
-    }
-  }
+
 
 .caption {
     position: sticky;
@@ -254,7 +251,19 @@ H1 {
     text-align: center;
     font-family: felt-tip-woman, sans-serif;
     line-height: 1.1;
+    text-wrap: pretty;
 }
+
+@media (min-height: 800px) {
+    .video-card {
+        min-height: calc(100vh - 40px);
+        padding-top: 40px;
+    }
+    .caption { 
+        padding: 0px;
+        margin-bottom: 5px;
+    }
+  }
 
 .video-container video {
     height: auto;
@@ -280,8 +289,7 @@ H1 {
     flex-wrap: wrap; /* Optional: wraps buttons on very small screens */
   }
   
-  .copy-link,
-  .share-link {
+  .copy-link, .share-link {
     font-size: clamp(0.55rem, 1.1vw, 0.75rem);
     padding: 0.4em 1em;
     border: 1px solid #6d6d6d;
