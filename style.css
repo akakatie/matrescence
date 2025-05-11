@@ -9,7 +9,10 @@ body, html {
     line-height: 1.6;
     scroll-snap-type: y mandatory;
     overscroll-behavior-y: contain;
-
+    font-family: "neue-kabel", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+    line-height: 1.2;
 
 }
 
@@ -450,4 +453,9 @@ video::-webkit-media-controls {
     gap: 1rem;
     margin-top: 50px;
     margin-bottom: 50px;
+  }
+
+  #home-sub-instr{
+    font-size: 1rem;
+    margin-top: 3rem;
   }
