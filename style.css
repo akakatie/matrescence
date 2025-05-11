@@ -73,11 +73,21 @@ a:hover {
     margin:auto
 }
 
-#bluesky-end{
+.socialIconEnd{
     height: 60px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
-.bluesky:hover{
+socials{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    gap: 2rem;
+    margin-top: 20px;
+}
+
+.socialIcon:hover{
     filter: invert(37%) sepia(42%) saturate(1637%) hue-rotate(245deg) brightness(87%) contrast(86%);
 }
 
@@ -427,7 +437,7 @@ video::-webkit-media-controls {
 
   #aboutSocials{
     text-align: center;
-    gap: 2rem;
-    margin-top: 100px;
+    gap: 1rem;
+    margin-top: 50px;
     margin-bottom: 50px;
   }
