@@ -157,7 +157,7 @@ H1 {
 }
 
 #scrolldownImg{
-
+    padding-bottom: 50px;
     padding-top: 5%;
     height: 100px;
     width:100px;
@@ -393,6 +393,10 @@ video::-webkit-media-controls {
     .caption { 
         padding: 5px;
         margin-bottom: 15px;
+    }
+
+    #scrolldownImg{
+        padding-bottom: 0px;
     }
   }
 
