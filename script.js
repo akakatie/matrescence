@@ -97,9 +97,11 @@ async function loadVideos() {
         const fullURL = `${window.location.origin}${window.location.pathname}#${id.trim()}`;
         
         if (navigator.share) {
+          const shareText = `${shortTitle || ''}: ${caption}`.trim();
+
           navigator.share({
                 title: "Data is Blue #MyMatrescenceProject",
-                text: `${shortTitle || ''}: ${stripHTML(caption) || ''}`.trim(),
+                text: shareText,
                 url: fullURL
           }).catch((error) => {
             console.log('Share failed:', error);
@@ -124,6 +126,15 @@ async function loadVideos() {
   });
 
   setupAutoplay();
+
+  const anchor = window.location.hash;
+  if (anchor) {
+    const target = document.querySelector(anchor);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
 }
 
 function setupCustomControl(video, iconEl, timerEl) {
